@@ -1,0 +1,223 @@
+include pug/_mixins
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Practice Page
+    include pug/_styles
+  body(data-bs-spy="scroll", data-bs-target="#navbar")
+    include pug/_header
+    // Start landing
+    div(class="landing d-flex align-items-center", id="home")
+      .container
+        div(class="landing-content position-relative")
+          h2(class="display-5" data-aos="fade-right") Welcome to #[span(class="text-primary") Ag Coding]
+          p(class="fs-4 text-muted" data-aos="fade-left") We are team of talented designers making websites with Bootstrap
+          div(class="btn-group mt-3" data-aos="fade-up")
+            button(class="btn btn-primary px-4 py-2 me-3") Get Started
+            button(class="btn btn-outline-primary px-4 py-2", data-bs-toggle="modal", data-bs-target="#landing-modal") #[i(class="fa-solid fa-circle-play")] Watch Video
+            
+          //- Modal
+          div(class="modal fade", id="landing-modal", tabindex="-1", aria-labelledby="modal-label", role="dialog", aria-hidden="true")
+            div(class="modal-dialog modal-fullscreen")
+              div(class="modal-content")
+                div(class="modal-header")
+                  h5(class="modal-title", id="modal-label") Awesome Video
+                  button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+                div(class="modal-body")
+                  iframe(
+                    class="w-100",
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY",
+                    title="YouTube video player",
+                    frameborder="0",
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                    allowfullscreen
+                  )
+    // End landing
+
+    // Start about
+    div(class="about bg-section py-5", id="about")
+      .container
+        +main-title('About', 'Find Out More <span class="text-primary">About Us</span>','Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.')
+        .row
+          div(class="image col-lg-6 mb-5 mb-lg-0 me-lg-3", data-aos="fade-right")
+            img(class="img-fluid", src="imgs/about.jpg", alt="About Image")
+          div(class="text col-lg-5", data-aos="fade-left", data-aos-delay="500")
+            h4(class="mb-3") Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.
+            p(class="fst-italic") Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            ul(class="list-unstyled mt-5")
+              each val in [1,2]
+                li(class="d-flex align-items-start gap-4 mb-3")
+                  div(class="about-icon rounded-circle bg-body p-3 d-flex flex-shrink-0 justify-content-center align-items-center")
+                    i(class="fa-solid fa-book-open fs-3 text-primary")
+                  .text
+                    h5 Ullamco laboris nisi ut aliquip consequat
+                    p Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade
+    // End about
+
+    // Start Progress
+    div(class="progress-section py-5")
+      .container
+        div(class="row")
+            +progress-bar("HTMl", "40")
+            +progress-bar("CSS", "50")
+            +progress-bar("JavaScript", "60")
+            +progress-bar("PHP", "70")
+            +progress-bar("Wordpress", "80")
+            +progress-bar("Photoshop", "90")
+
+        div(class="row mt-5 py-5")
+            +progress-card(110, 'Happy Clients', 'fa-face-smile-beam')
+            +progress-card(120, 'Projects', 'fa-handshake')
+            +progress-card(24, 'Hours Of Support', 'fa-phone-flip')
+            +progress-card(15, 'Hard Workers', 'fa-user-group')
+    // End Progress
+
+    // Start Clients
+    div(class="clients bg-section py-5")
+      .container
+        div(class="row", data-aos="fade-up")
+          - var i = 1;
+            while i <= 6
+              div(class="col-6 col-md-4 col-lg-2 p-5"): img(class="img-fluid clients-img", src="imgs/clients/client-" + i++ + ".png", alt="")
+    // End Clients
+
+    // Start Services
+    div(class="services py-5", id="services")
+      .container
+        +main-title('Services', 'Check our Services','Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.')
+        .row
+          each val in [1, 2, 3, 4]
+            div(class="col-md-6 col-lg-4 col-xl-3")
+              +service-card('Lorem, ipsum dolor.', 'Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi')
+    // End Services
+
+    // Start Slider
+    div(class="slider py-5")
+      .container
+        div(id="slider-carousel" class="carousel slide" data-bs-interval="5000" data-bs-ride="carousel")
+          div(class="carousel-indicators")
+            button(type="button" data-bs-target="#slider-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1")
+            button(type="button" data-bs-target="#slider-carousel" data-bs-slide-to="1" aria-label="Slide 2")
+            button(type="button" data-bs-target="#slider-carousel" data-bs-slide-to="2" aria-label="Slide 3")
+          
+          div(class="carousel-inner")
+            div(class="carousel-item active")
+              div(class="slide-img rounded-circle overflow-hidden mb-5 mx-auto")
+                img(class="img-fluid" src="imgs/testimonials/testimonials-1.jpg" class="d-block w-100" alt="")
+              div(class="carousel-caption d-none d-md-block")
+                h5 First slide label
+                p Some representative placeholder content for the first slide.
+            div(class="carousel-item")
+              div(class="slide-img rounded-circle overflow-hidden mb-5 mx-auto")
+                img(class="img-fluid" src="imgs/testimonials/testimonials-2.jpg" class="d-block w-100" alt="")
+              div(class="carousel-caption d-none d-md-block")
+                h5 Second slide label
+                p Some representative placeholder content for the second slide.
+            div(class="carousel-item")
+              div(class="slide-img rounded-circle overflow-hidden mb-5 mx-auto")
+                img(class="img-fluid" src="imgs/testimonials/testimonials-3.jpg" class="d-block w-100" alt="")
+              div(class="carousel-caption d-none d-md-block")
+                h5 Third slide label
+                p Some representative placeholder content for the third slide.
+
+          button(class="carousel-control-prev" type="button" data-bs-target="#slider-carousel" data-bs-slide="prev")
+            span(class="carousel-control-prev-icon" aria-hidden="true")
+            span(class="visually-hidden") Previous
+
+          button(class="carousel-control-next" type="button" data-bs-target="#slider-carousel" data-bs-slide="next")
+            span(class="carousel-control-next-icon" aria-hidden="true")
+            span(class="visually-hidden") Next
+    // End Slider
+
+    // Start Portfolio
+    div(class="portfolio py-5", id="portfolio")
+      .container
+        +main-title('Portfolio', 'Check our <span class="text-primary">Portfolio</span>','Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.')
+        ul(class="filterUl list-unstyled list-group list-group-horizontal flex-wrap justify-content-center")
+          each val in ['All', 'App', 'Photo', 'Web']
+            li(class="user-select-none list-group-item flex-grow-0 border fs-5") #{val}
+
+        div(class="row my-5 portFiltContainer", data-aos="fade-zoom-in", data-aos-delay="300")
+            div(class="col-sm-6 col-md-4 mb-5")
+              div(class="shadow p-3 portf-img")
+                img(class="all app img-fluid", src="imgs/portfolio/portfolio-1.jpg")
+            div(class="col-sm-6 col-md-4 mb-5")
+              div(class="shadow p-3 portf-img")
+                img(class="all photo img-fluid", src="imgs/portfolio/portfolio-2.jpg")
+            div(class="col-sm-6 col-md-4 mb-5")
+              div(class="shadow p-3 portf-img")
+                img(class="all web img-fluid", src="imgs/portfolio/portfolio-3.jpg")
+            div(class="col-sm-6 col-md-4 mb-5")
+              div(class="shadow p-3 portf-img")
+                img(class="all app img-fluid", src="imgs/portfolio/portfolio-4.jpg")
+            div(class="col-sm-6 col-md-4 mb-5")
+              div(class="shadow p-3 portf-img")
+                img(class="all web img-fluid", src="imgs/portfolio/portfolio-5.jpg")
+            div(class="col-sm-6 col-md-4 mb-5")
+              div(class="shadow p-3 portf-img")
+                img(class="all web img-fluid", src="imgs/portfolio/portfolio-6.jpg")
+    // End Protfolio
+
+    // Start Contact
+    div(class="contact bg-section py-5", id="contact")
+      .container
+        +main-title('Contact Us', 'Check our <span class="text-primary">Contact Us</span>','Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.')
+
+        div(class="row")
+          div(class="col-lg-6 mb-4", data-aos="fade-left", data-aos-delay="100")
+            div(class="bg-body p-4 text-center text-muted shadow")
+              i(class="cont-icon fa-solid fa-location-dot fs-3 text-primary")
+              h5(class="my-3") Our Address
+              h6(class="user-select-all") A108 Cairo Street, Egypt, NY 535022
+          div(class="col-6 col-lg-3 mb-5", data-aos="fade-left", data-aos-delay="400")
+            div(class="bg-body p-4 text-center text-muted shadow")
+              i(class="cont-icon fa-solid fa-paper-plane fs-3 text-primary")
+              h5(class="my-3") Email Us
+              h6(class="text-break") #[a(class="text-decoration-none text-muted", href="mailto:contact@example.com") contact@example.com]
+          div(class="col-6 col-lg-3 mb-5", data-aos="fade-left", data-aos-delay="700")
+            div(class="bg-body p-4 text-center text-muted shadow")
+              i(class="cont-icon fa-solid fa-phone fs-3 text-primary")
+              h5(class="my-3") Call Us
+              h6(class="user-select-all") +1 5589 55488 55
+
+        div(class="row", data-aos="zoom-out-left", data-aos-delay="300")
+          div(class="col-lg-6")
+            iframe(
+              class="p-2 shadow",
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3867.364581956319!2d31.234755376433508!3d30.044544866271437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1660951176617!5m2!1sen!2seg",
+              width="100%",
+              height="328",
+              allowfullscreen="",
+              loading="lazy",
+              referrerpolicy="no-referrer-when-downgrade"
+            )
+          div(class="col-lg-6")
+            form(class="bg-body p-3", action="#") 
+              .row
+                div(class="col-6 mb-3")
+                  input(class="form-control", type="text", placeholder="Your Name")
+                div(class="col-6 mb-3")
+                  input(class="form-control", type="email", placeholder="Your E-Mail", required)
+                div(class="mb-3")
+                  input(class="form-control", type="email", placeholder="Subject", required)
+                div
+                  textarea(class="form-control", name="message", rows="5", placeholder="Message...", maxlength="300")
+                  span(class="textarea-count")
+                div(class="col-6")
+                  input(class="btn btn-primary mt-3", type="submit", value="Send Message")
+    // End Contact
+
+    // Scroll up button
+    div(class="go-up")
+      i(class="fa-solid fa-circle-chevron-up fa-beat goUp-btn", style="--fa-animation-duration: 2s;")
+
+    // Scroll progress bar
+    span(class="scrollProgressBar")
+
+    include pug/_footer
+
+    include pug/_scripts
