@@ -1,0 +1,10 @@
+body {
+  font-family: cursive;
+  > div {
+    overflow: hidden !important;
+  }
+}
+
+.bg-section {
+  background-color: $secBg;
+}

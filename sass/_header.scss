@@ -1,0 +1,51 @@
+/* Start header */
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+header {
+  .navbar-toggler {
+    border: none;
+    @include prefixer(transition, $trans, webkit moz o ms);
+    &:focus {
+      box-shadow: none;
+    }
+    &:hover {
+      color: $blue;
+    }
+  }
+  .nav-item {
+    position: relative;
+    .nav-link {
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: $blue;
+        transition: $trans;
+        -webkit-transition: $trans;
+        -moz-transition: $trans;
+        -ms-transition: $trans;
+        -o-transition: $trans;
+      }
+      &.active,
+      &:hover {
+        color: $blue;
+        &::before {
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+/* End header */

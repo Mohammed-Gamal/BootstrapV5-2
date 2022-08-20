@@ -1,0 +1,40 @@
+//- Main title mixin
+mixin main-title(header='Dummy', title='Main Title', text='This is dummy text description.')
+  div(class="intro-text text-center")
+    h4(class="main-title text-primary rounded-pill fs-2 p-1 px-2")!= header
+    p(class="fs-3")!= title
+    p(class="fs-5 mb-5 text-muted")!= text
+
+//- Progress bar mixins
+mixin progress-bar(title="Title", value="0")
+  div(class="col-md-6")
+    div(class="info d-flex justify-content-between fs-6")
+      b= title
+      b #[span 0]%
+    div(class="progress mb-4")
+      div(
+        class="progress-bar progress-bar-striped progress-bar-animated",
+        role="progressbar",
+        aria-label="Animated striped example",
+        aria-valuenow=value,
+        aria-valuemin="0",
+        aria-valuemax="100",
+        style='width: 0'
+        )
+
+//- Progress card mixin
+mixin progress-card(value='0', text='Description', icon='fa-face-smile-beam')
+  div(class="col-md-6 col-lg-4 col-xl-3 mb-5")
+    div(class="bg-section p-5 text-center position-relative")
+      div(class="bg-primary rounded-circle progIcon d-flex justify-content-center align-items-center position-absolute top-0 start-50 translate-middle fs-3 text-light")
+        i(class="text-light fs-3 fa-solid" + ' ' + icon)
+      .text
+        h3(data-value=value) 0
+        h4 #{text}
+
+//- Service card mixin
+mixin service-card(title="Title", text="Dummy text")
+  div(class="item mb-4 p-5 shadow")
+    i(class="fa-solid fa-chart-gantt text-primary fs-2 mb-4")
+    h4(class="mb-3") #{title}
+    p(class="text-muted lh-lg") #{text}

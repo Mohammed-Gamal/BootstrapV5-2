@@ -1,0 +1,45 @@
+@import "../scss-bootstrap/functions";
+@import "../scss-bootstrap/variables";
+
+/* Start Footer */
+.footer {
+  .social-links a {
+    display: inline-flex;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    @include prefixer(transition, $trans, webkit moz o ms);
+    &:hover {
+      border: 1px solid $blue;
+      color: $blue !important;
+      background-color: white !important;
+    }
+  }
+  .footer-ul {
+    li {
+      a {
+        display: block;
+        margin: 7px 0;
+        text-decoration: none;
+        @include prefixer(transition, $trans, webkit moz o ms);
+        &::before {
+          content: "\f101";
+          font-family: "FontAwesome";
+          font-weight: 900;
+          margin-right: 7px;
+          color: $gray-600;
+          font-size: 12px;
+        }
+        &:hover {
+          color: $blue !important;
+          padding-left: 10px;
+        }
+        &:hover::before {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+/* End Footer */

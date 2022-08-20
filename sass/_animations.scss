@@ -1,0 +1,10 @@
+@import "mixins";
+
+@keyframes appear {
+  from {
+    @include prefixer(transform, scale(0), webkit moz o ms);
+  }
+  to {
+    @include prefixer(transform, scale(1), webkit moz o ms);
+  }
+}
